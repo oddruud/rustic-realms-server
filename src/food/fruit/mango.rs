@@ -1,3 +1,4 @@
+use crate::combat::Combatant;
 use crate::properties::SuperPower;
 use crate::properties::Emotion;
 use crate::errors::RequestError;
@@ -29,4 +30,8 @@ impl Mango {
 
         return Result::Ok(Emotion::Confused);
     }
+}
+
+impl Combatant for Mango {
+
 }
