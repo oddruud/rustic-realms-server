@@ -8,12 +8,14 @@ use crate::errors::RequestError;
 pub struct Mango {
     pub name : String,
     pub super_power : Option<SuperPower>,
-    pub edible_type: EdibleType
+    pub edible_type: EdibleType,
+    pub health: i32
+
 }
 
 impl Mango {
     pub fn new(name: String) -> Self { 
-        Self {name: name, super_power: Option::None, edible_type: EdibleType::Fruit}
+        Self {name: name, super_power: Option::None, edible_type: EdibleType::Fruit, health: 100}
     }
 
     pub fn set_super_power(&mut self, power : SuperPower){
@@ -53,7 +55,6 @@ impl Warrior for Mango {
 
 }
 
-
 impl Edible for Mango {
     fn get_name(&self)-> &str{
         &self.name
@@ -61,5 +62,13 @@ impl Edible for Mango {
 
     fn get_type(&self)-> &EdibleType{
         &self.edible_type
+    }
+
+    fn get_health(&self) -> i32 {
+        self.health
+    }
+
+    fn set_health(&mut self, health:i32){
+        self.health = health
     }
 }
