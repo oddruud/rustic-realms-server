@@ -1,4 +1,4 @@
-use super::AttackType;
+use super::Attack;
 use super::SkirmishResult;
 
 pub trait Warrior {
@@ -6,6 +6,6 @@ pub trait Warrior {
     fn perform_attack_on(
         &mut self,
         opponent: &impl Warrior,
-        attack_type: AttackType,
+        attack: &Attack,
     ) -> SkirmishResult;
 }
