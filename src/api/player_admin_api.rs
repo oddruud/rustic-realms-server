@@ -10,9 +10,11 @@ pub struct PlayerAdminAPI{}
 
 impl PlayerAdminAPI {
 
-    pub fn initialize_endpoints(server: &mut Server<()>)
+    pub fn register_endpoints(server: &mut Server<()>)
     {
-        server.at("/register").post(Self::register_player);
+        server.at("/player/new").post(Self::register_player);
+        
+        
         //app.at("/login").post(login_player);
     }
 

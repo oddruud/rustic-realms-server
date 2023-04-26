@@ -10,10 +10,22 @@ pub struct ExperimentalAPI{}
 
 impl ExperimentalAPI
 {
-    pub fn initialize_endpoints(server: &mut Server<()>)
+    pub fn register_endpoints(server: &mut Server<()>)
     {
-        server.at("/talk").post(Self::talk);
-        server.at("/fight").post(Self::fight);
+        //TEST if connection is there
+        server.at("/").get(Self::ping);
+        server.at("/talk").get(Self::talk);
+        server.at("/fight").get(Self::fight);
+    }
+
+    pub async fn ping(mut req: Request<()>) -> tide::Result 
+    {
+        let body = req.body_string().await?;
+        println!("{:?}", body);
+        
+        let mut res = Response::new(201);
+        res.set_body(String::from("Hola!"));
+        Ok(res)
     }
 
     pub async fn talk(mut req: Request<()>) -> tide::Result 
